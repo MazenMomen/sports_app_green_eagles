@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:sports/data/models/api.dart';
-import 'package:sports/data/repo/getplayers-repo.dart';
-import 'package:sports/data/repo/repoplayer.dart';
 import 'package:sports/screens/player.dart';
 import 'package:sports/screens/search.dart';
-
 import '../data/cubits/cubit/player/cubit/getplayer_cubit.dart';
 
 class Players extends StatefulWidget {
-  Players({Key? key, required this.teamname,  }) : super(key: key);
-   final String teamname;
+  Players({
+    Key? key,
+    required this.teamname,
+  }) : super(key: key);
+  final String teamname;
 
   @override
   State<Players> createState() => _PlayersState();
@@ -21,9 +20,9 @@ class _PlayersState extends State<Players> {
   void initState() {
     super.initState();
 
-
     context.read<GetplayerCubit>().getplayer();
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -41,7 +40,6 @@ class _PlayersState extends State<Players> {
       ),
       body: Column(
         children: [
-
           SizedBox(
             height: 10,
           ),
@@ -55,7 +53,6 @@ class _PlayersState extends State<Players> {
                     child: Center(child: CircularProgressIndicator()));
               } else if (state is getplayerscucces) {
                 return Expanded(
-
                   child: Column(
                     children: [
                       SizedBox(height: 10),
@@ -113,24 +110,25 @@ class _PlayersState extends State<Players> {
                                                 MaterialPageRoute(
                                                   builder:
                                                       (BuildContext context) =>
-                                                      Playersss(),
+                                                          Playersss(),
                                                 ),
                                               );
                                             },
-                                            icon: Icon(
-                                                Icons.arrow_forward,
+                                            icon: Icon(Icons.arrow_forward,
                                                 color: Colors.black),
                                           ),
                                           SizedBox(width: 20),
                                           Column(
                                             crossAxisAlignment:
-                                            CrossAxisAlignment.start,
+                                                CrossAxisAlignment.start,
                                             children: [
                                               Text(
-                                          state.Result.result?[index].playerName as String??" ",
+                                                state.Result.result?[index]
+                                                        .playerName as String ??
+                                                    " ",
                                                 style: TextStyle(
                                                   fontWeight: FontWeight.bold,
-                                                  fontSize: 20,
+                                                  fontSize: 15,
                                                   color: Colors.black,
                                                   fontFamily: 'Sofia',
                                                 ),
@@ -139,7 +137,9 @@ class _PlayersState extends State<Players> {
                                                 height: 8,
                                               ),
                                               Text(
-                                                state.Result.result?[index].playerType as String ?? " ",
+                                                state.Result.result?[index]
+                                                        .playerType as String ??
+                                                    " ",
                                                 style: TextStyle(
                                                   fontWeight: FontWeight.w300,
                                                   fontSize: 17,
@@ -151,19 +151,22 @@ class _PlayersState extends State<Players> {
                                           ),
                                           Spacer(),
                                           Image.network(
-                                            state.Result.result![index].playerImage ?? "" ,
-                                            errorBuilder: (context, error, stackTrace) {
-                                              return Text("") ;
+                                            state.Result.result![index]
+                                                    .playerImage ??
+                                                "",
+                                            errorBuilder:
+                                                (context, error, stackTrace) {
+                                              return Text("");
                                             },
-                                             height: 80,
-                                            width: 60,
+                                            height: 80,
+                                            width: 50,
                                             fit: BoxFit.fill,
                                           ),
                                           SizedBox(width: 15),
                                           Text(
-                                            "${index + 1}",
+                                            "${index }",
                                             style: TextStyle(
-                                              fontSize: 30,
+                                              fontSize: 20,
                                               color: Colors.black,
                                               fontFamily: 'Sofia',
                                               fontWeight: FontWeight.bold,
