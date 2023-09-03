@@ -7,9 +7,7 @@ import 'package:share/share.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-
-
-
+import '../main.dart';
 
 class Players extends StatefulWidget {
   Players({
@@ -104,14 +102,13 @@ class _PlayersState extends State<Players> {
                                 state.Result.result?[index].playerAssists ??
                                     " ";
                             String? a11 =
-                                state.Result.result?[index].teamName ??
-                                    " ";
+                                state.Result.result?[index].teamName ?? " ";
 
                             return InkWell(
                               splashColor: Color(0xFF38003C).withOpacity(1),
                               onTap: () {
                                 _showPlayerDetailsDialog(context, a1, a2, a3,
-                                    a4, a5, a6, a7, a8, a9, a10,a11);
+                                    a4, a5, a6, a7, a8, a9, a10, a11);
                               },
                               child: Column(
                                 children: [
@@ -137,7 +134,21 @@ class _PlayersState extends State<Players> {
                                       child: Row(
                                         children: [
                                           IconButton(
-                                            onPressed: () {},
+                                            onPressed: () {
+                                              _showPlayerDetailsDialog(
+                                                  context,
+                                                  a1,
+                                                  a2,
+                                                  a3,
+                                                  a4,
+                                                  a5,
+                                                  a6,
+                                                  a7,
+                                                  a8,
+                                                  a9,
+                                                  a10,
+                                                  a11);
+                                            },
                                             icon: Icon(Icons.arrow_forward,
                                                 color: Colors.black),
                                           ),
@@ -183,21 +194,21 @@ class _PlayersState extends State<Players> {
                                               return Text("");
                                             },
                                             height: 80,
-                                            width: 40,
+                                            width: 80,
                                             fit: BoxFit.fill,
                                           ),
-                                          SizedBox(width: 15),
-                                          Text(
-                                            state.Result.result?[index]
-                                                    .playerNumber ??
-                                                " ",
-                                            style: TextStyle(
-                                              fontSize: 20,
-                                              color: Colors.black,
-                                              fontFamily: 'Sofia',
-                                              fontWeight: FontWeight.bold,
-                                            ),
-                                          ),
+                                          // SizedBox(width: 15),
+                                          // Text(
+                                          //   state.Result.result?[index]
+                                          //           .playerNumber ??
+                                          //       " ",
+                                          //   style: TextStyle(
+                                          //     fontSize: 20,
+                                          //     color: Colors.black,
+                                          //     fontFamily: 'Sofia',
+                                          //     fontWeight: FontWeight.bold,
+                                          //   ),
+                                          // ),
                                         ],
                                       ),
                                     ),
@@ -234,7 +245,7 @@ void _showPlayerDetailsDialog(
   String playererd,
   String playergoals,
   String playerassists,
-    String team,
+  String team,
 ) {
   showDialog(
     context: context,
@@ -249,7 +260,7 @@ void _showPlayerDetailsDialog(
               child: IconButton(
                 icon: Icon(Icons.share),
                 color: Colors.white,
-                onPressed: () async => _openWhatsAppWeb(),
+                onPressed: () => _openWhatsAppWeb(playerName, team),
               ),
               backgroundColor: Color(0xFF38003C)),
         ),
@@ -565,20 +576,12 @@ void _showPlayerDetailsDialog(
     },
   );
 }
-void _sharePlayerWithWhatsApp(String playerName, String playerClub) async {
 
-    await launch("8554844");
+Future<void> _openWhatsAppWeb(String playerName, String team) async {
+  final String textToShare = "Player Name: $playerName\nClub: $team";
+  Share.share(textToShare);
 
-}
-void _openWhatsAppWeb() async {
-  final String whatsappWebUrl = "https://web.whatsapp.com/";
-  try {
-    if (await canLaunch(whatsappWebUrl)) {
-      await launch(whatsappWebUrl);
-    } else {
-      print("Could not open WhatsApp web: URL not launchable.");
-    }
-  } catch (e) {
-    print("Error opening WhatsApp web: $e");
-  }
+  // if (!await launchUrl(_url)) {
+  //   throw Exception('Could not launch $_url');
+  // }
 }
