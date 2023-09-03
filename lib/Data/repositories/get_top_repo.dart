@@ -1,8 +1,7 @@
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
-import 'package:sports_app/Data/Models/get_top.dart';
-
+import 'package:sports_app_green_eagles/data/models/get_top_model.dart';
 
 class GetTopRepo {
   Future<GetTopModel?> getTop() async {

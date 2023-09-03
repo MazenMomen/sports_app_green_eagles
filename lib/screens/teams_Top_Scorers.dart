@@ -1,9 +1,6 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:http/http.dart';
-import 'package:sports_app/Cubits/GetTeamsCubit/get_teams_cubit.dart';
+import 'package:sports_app_green_eagles/data/cubits/GetTeamsCubit/get_teams_cubit.dart';
 // import 'package:sports_app/Data/Models/get_teams.dart';
 // import 'package:sports_app/Data/Repository/get_teams_repo.dart';
 
@@ -15,27 +12,21 @@ class TeamsTopScorersScreen extends StatefulWidget {
 }
 
 class _TeamsTopScorersScreenState extends State<TeamsTopScorersScreen> {
-  
-  
-  
   @override
   void initState() {
     // TODO: implement initState
     context.read<GetTeamsCubit>().getTeams();
-    
   }
-  
+
   //
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-       leading: BackButton(
-        onPressed: () {
-          
-        },
-        color: Colors.white,
-       ),
+        leading: BackButton(
+          onPressed: () {},
+          color: Colors.white,
+        ),
         elevation: 0,
         backgroundColor: const Color(0xFF38003C),
         title: BlocBuilder<GetTeamsCubit, GetTeamsState>(
@@ -159,7 +150,6 @@ class _TeamsTopScorersScreenState extends State<TeamsTopScorersScreen> {
                           ElevatedButton(
                             onPressed: () {
                               context.read<GetTeamsCubit>().getTop();
-                             
                             },
                             child: const Text(
                               'Top Scorers',
@@ -245,7 +235,6 @@ class _TeamsTopScorersScreenState extends State<TeamsTopScorersScreen> {
                             ElevatedButton(
                               onPressed: () {
                                 context.read<GetTeamsCubit>().getTop();
-                                
                               },
                               child: const Text(
                                 'Top Scorers',
@@ -705,5 +694,3 @@ class _TeamsTopScorersScreenState extends State<TeamsTopScorersScreen> {
     );
   }
 }
-
-

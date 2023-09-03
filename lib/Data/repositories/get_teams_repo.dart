@@ -1,7 +1,8 @@
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
-import 'package:sports_app/Data/Models/get_teams.dart';
+import 'package:sports_app_green_eagles/data/models/get_teams_model.dart';
+
 class GetTeamsRepo {
   Future<GetTeamsModel?> getTeams() async {
     try {
