@@ -28,7 +28,7 @@ class Result {
   int? playerKey;
   String? playerName;
   String? playerNumber;
-  Null? playerCountry;
+  String? playerCountry;
   String? playerType;
   String? playerAge;
   String? playerMatchPlayed;
