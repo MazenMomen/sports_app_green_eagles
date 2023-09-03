@@ -14,22 +14,25 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
-      providers: [
-        BlocProvider<GetLeaguesCubit>(
-          create: (BuildContext context) => GetLeaguesCubit(),
-        ),
-        BlocProvider<GetCountriesCubit>(
-          create: (BuildContext context) => GetCountriesCubit(),
-        ),
-      ],
-      child: MaterialApp(
-        title: 'Flutter Demo',
-        theme: ThemeData(
-          colorScheme: ColorScheme.fromSeed(seedColor: const Color(0xFF38003C)),
-          useMaterial3: true,
-        ),
-        home: const CountriesScreen(),
-      ),
-    );
+        providers: [
+          BlocProvider<GetLeaguesCubit>(
+            create: (BuildContext context) => GetLeaguesCubit(),
+          ),
+          BlocProvider<GetCountriesCubit>(
+            create: (BuildContext context) => GetCountriesCubit(),
+          ),
+          BlocProvider<GetTeamsCubit>(
+            create: (BuildContext context) => GetTeamsCubit(),
+          ),
+        ],
+        child: MaterialApp(
+          title: 'Flutter Demo',
+          theme: ThemeData(
+            colorScheme:
+                ColorScheme.fromSeed(seedColor: const Color(0xFF38003C)),
+            useMaterial3: true,
+          ),
+          home: const CountriesScreen(),
+        ));
   }
 }
