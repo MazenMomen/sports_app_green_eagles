@@ -29,10 +29,10 @@ class CountriesScreen extends StatelessWidget {
                 ),
               );
             } else {
-              return const Center(child: Text("Something went wrong!!"));
+              return const Center(child: Text(""));
             }
           } catch (error) {
-            return const Center(child: Text("Something went wrong!!"));
+            return const Center(child: Text(""));
           }
         },
       ),

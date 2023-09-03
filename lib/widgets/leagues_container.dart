@@ -40,10 +40,9 @@ class LeaguesContainer extends StatelessWidget {
                     crossAxisCellCount: 4,
                     mainAxisCellCount: 3,
                     child: Image.network(
-                      state.response.result[index].leagueLogo ?? "NO IMAGE",
+                      state.response.result[index].leagueLogo ?? "",
                       errorBuilder: (context, exception, stackTrace) {
-                        return Image.network(
-                            "https://dealio.imgix.net/uploads/147885uploadshotel-pool-canaves.jpg");
+                        return const Text("");
                       },
                     ),
                   ),
@@ -65,10 +64,9 @@ class LeaguesContainer extends StatelessWidget {
                       crossAxisCellCount: 1,
                       mainAxisCellCount: 1,
                       child: Image.network(
-                        state.response.result[index].countryLogo ?? "NO IMAGE",
+                        state.response.result[index].countryLogo ?? "",
                         errorBuilder: (context, exception, stackTrace) {
-                          return Image.network(
-                              "https://dealio.imgix.net/uploads/147885uploadshotel-pool-canaves.jpg");
+                          return const Text("");
                         },
                       )),
                   StaggeredGridTile.count(

@@ -44,16 +44,14 @@ class CountriesContainer extends StatelessWidget {
                     ],
                   ),
                   child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
                       Image.network(
                         width: MediaQuery.of(context).size.width * 0.16,
                         height: MediaQuery.of(context).size.height * 0.08,
-                        state.response.result[index].countryLogo ?? "NO IMAGE",
+                        state.response.result[index].countryLogo ?? "",
                         errorBuilder: (context, exception, stackTrace) {
-                          return Image.network(
-                              width: MediaQuery.of(context).size.width * 0.16,
-                              height: MediaQuery.of(context).size.height * 0.08,
-                              "https://dealio.imgix.net/uploads/147885uploadshotel-pool-canaves.jpg");
+                          return const Text("");
                         },
                       ),
                       FittedBox(
